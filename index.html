@@ -4,18 +4,47 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 body { background-color: black; }
-h1 {
+h1, a, li {
   color: white;
   font-family: 'Roboto Mono', monospace;
 }
-li {
+/* https://www.w3schools.com/howto/howto_css_topnav_centered.asp */
+nav {
+  position: relative;
+  background-color: #333333;
+  overflow: hidden;
+}
+a {
+  float: left;
+  color: #f0f0f0;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+a:hover {
+  background-color: #dddddd;
+  color: black;
+}
+a.active {
+  background-color: #04AA6D;
   color: white;
-  font-family: 'Roboto Mono', monospace;
+}
+@media screen and (max-width: 600px) {
+  a {
+    float: none;
+    display: block;
+  }
 }
 </style>
 </head>
 <body>
 <h1>Soul Thief</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="news.html">Blog</a>
+<a href="vote.html">Donate</a>
+</nav>
 <ul>
 <li>Pixel Gun 3D (Soul Thief PG3D)</li>
 <li>Minecraft</li>
