@@ -19,3 +19,15 @@ function urlExists(testUrl) {
   delete http;
   return status;
 }
+i = 0
+while (true) {
+  url = "https://raw.githubusercontent.com/TechDudie/soulthief/main/posts/post_" + i
+  if (urlExists(url)) {
+    newsfile = new createXHR();
+    newsfile.open('GET', url, false);
+    newsfile.send();
+    document.getElementById("news").innerHTML += newsfile.responseText;
+  } else {
+    break;
+  }
+}
