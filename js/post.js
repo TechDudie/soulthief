@@ -9,9 +9,21 @@ function createXHR() {
     }
   }
 }
+base_url = "https://raw.githubusercontent.com/TechDudie/soulthief/main/posts/post_"
 i = 0
 while (true) {
-  url = "https://raw.githubusercontent.com/TechDudie/soulthief/main/posts/post_" + i
+  url = base_url + i
+  newsfile = new createXHR();
+  newsfile.open('GET', url, false);
+  newsfile.send();
+  if (newsfile.status === 404) {
+    break;
+  }
+  i++;
+}
+i--;
+while (true) {
+  url = base_url + i
   newsfile = new createXHR();
   newsfile.open('GET', url, false);
   newsfile.send();
@@ -28,5 +40,5 @@ while (true) {
   document.getElementById("news").innerHTML += post;
   delete text;
   delete post;
-  i++;
+  i--;
 }
