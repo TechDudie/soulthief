@@ -9,16 +9,6 @@ function createXHR() {
     }
   }
 }
-function urlExists(testUrl) {
-  http = jQuery.ajax({
-    type: "HEAD",
-    url: testUrl,
-    async: false
-  })
-  status = http.status != 404;
-  delete http;
-  return status;
-}
 i = 0
 while (true) {
   url = "https://raw.githubusercontent.com/TechDudie/soulthief/main/posts/post_" + i
