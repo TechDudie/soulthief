@@ -11,24 +11,24 @@ function createXHR() {
 }
 function getJSONData(post_id) {
   json_url = "https://api.github.com/repos/TechDudie/soulthief/commits?path=posts/post_";
-  json_url += post_id
+  json_url += post_id;
   jsonfile = new createXHR();
   jsonfile.open('GET', json_url, false);
   jsonfile.send();
   json = jsonfile.responseText();
   json = eval(json);
   data = json[0]["commit"]["author"];
-  return [data["name"], data["date"]]
+  return [data["name"], data["date"]];
 }
 function formatDate(github_date) {
   date = github_date.split("-");
   date[2] = date[2].split("T")[0];
-  return date[1] + "/" + date[2] + "/" + date[0]
+  return date[1] + "/" + date[2] + "/" + date[0];
 }
 base_url = "https://raw.githubusercontent.com/TechDudie/soulthief/main/posts/post_";
 i = 0;
 while (true) {
-  url = base_url + i
+  url = base_url + i;
   newsfile = new createXHR();
   newsfile.open('GET', url, false);
   newsfile.send();
@@ -39,7 +39,7 @@ while (true) {
 }
 i--;
 while (true) {
-  url = base_url + i
+  url = base_url + i;
   newsfile = new createXHR();
   newsfile.open('GET', url, false);
   newsfile.send();
@@ -48,7 +48,9 @@ while (true) {
   }
   text = newsfile.responseText;
   text = text.split("\n");
-  post = ""
+  data = getJSONData(i);
+  date = formatDate(data[1]);
+  post = "<h3>" + date + " - " + data[0] + "</h3>";
   text.forEach(function(item, index) {
     post += "\n<p>" + item + "</p>";
   });
