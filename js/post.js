@@ -10,25 +10,25 @@ function createXHR() {
   }
 }
 function getJSONData(post_id) {
-  json_url = "https://api.github.com/repos/TechDudie/soulthief/commits?path=posts/post_";
+  var json_url = "https://api.github.com/repos/TechDudie/soulthief/commits?path=posts/post_";
   json_url += post_id;
-  jsonfile = new createXHR();
+  var jsonfile = new createXHR();
   jsonfile.open('GET', json_url, false);
   jsonfile.send();
-  json = jsonfile.responseText();
-  json = eval(json);
-  data = json[0]["commit"]["author"];
+  var json = JSON.parse(jsonfile.responseText());
+  var data = json[0]["commit"]["author"];
   return [data["name"], data["date"]];
 }
 function formatDate(github_date) {
-  date = github_date.split("-");
+  var date = github_date.split("-");
   date[2] = date[2].split("T")[0];
   return date[1] + "/" + date[2] + "/" + date[0];
 }
-base_url = "https://raw.githubusercontent.com/TechDudie/soulthief/main/posts/post_";
-i = 0;
+var base_url = "https://raw.githubusercontent.com/TechDudie/soulthief/main/posts/post_";
+var i = 0;
+var newsfile;
 while (true) {
-  url = base_url + i;
+  var url = base_url + i;
   newsfile = new createXHR();
   newsfile.open('GET', url, false);
   newsfile.send();
@@ -38,6 +38,10 @@ while (true) {
   i++;
 }
 i--;
+var text;
+var post;
+var post_data;
+var post_date;
 while (true) {
   url = base_url + i;
   newsfile = new createXHR();
@@ -48,21 +52,13 @@ while (true) {
   }
   text = newsfile.responseText;
   text = text.split("\n");
-  data = getJSONData(i);
-  date = formatDate(data[1]);
-  alert(text);
-  alert(data);
-  alert(date);
-  post = "<h3>" + date + " - " + data[0] + "</h3>";
+  post_data = getJSONData(i);
+  post_date = formatDate(data[1]);
+  post = "<h3>" + post_date + " - " + post_data[0] + "</h3>";
   text.forEach(function(item, index) {
     post += "\n<p>" + item + "</p>";
   });
   document.getElementById("news").innerHTML += post;
   alert(post);
-  delete url;
-  delete newsfile;
-  delete text;
-  delete post;
   i--;
 }
-delete base_url;
