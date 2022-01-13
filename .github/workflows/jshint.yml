@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Checkout JSHint
-        run: curl https://github.com/jshint/jshint/archive/refs/tags/2.13.3.zip
+        run: curl -L https://github.com/jshint/jshint/archive/refs/tags/2.13.3.zip
       - name: ls
         run: ls
       - name: Unzip JSHint
