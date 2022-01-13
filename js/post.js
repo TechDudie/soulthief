@@ -50,11 +50,15 @@ while (true) {
   text = text.split("\n");
   data = getJSONData(i);
   date = formatDate(data[1]);
+  alert(text);
+  alert(data);
+  alert(date);
   post = "<h3>" + date + " - " + data[0] + "</h3>";
   text.forEach(function(item, index) {
     post += "\n<p>" + item + "</p>";
   });
   document.getElementById("news").innerHTML += post;
+  alert(post);
   delete url;
   delete newsfile;
   delete text;
