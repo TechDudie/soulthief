@@ -11,12 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Checkout JSHint
-        run: curl -L https://github.com/jshint/jshint/archive/refs/tags/2.13.3.zip
+        run: touch jshint.zip && curl -L https://github.com/jshint/jshint/archive/refs/tags/2.13.3.zip > jshint.zip
       - name: ls
         run: ls
       - name: Unzip JSHint
-        run: unzip jshint-2.13.3.zip
+        run: unzip jshint.zip
       - name: ls
         run: ls
       - name: Analyze Code
-        run: cd jshint-2.13.3/bin && ./jshint ../../js/post.js
+        run: cd jshint/bin && ./jshint ../../js/post.js
