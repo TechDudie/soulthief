@@ -20,6 +20,11 @@ function getJSONData(post_id) {
   data = json[0]["commit"]["author"];
   return [data["name"], data["date"]]
 }
+function formatDate(github_date) {
+  date = github_date.split("-");
+  date[2] = date[2].split("T")[0];
+  return date[1] + "/" + date[2] + "/" + date[0]
+}
 base_url = "https://raw.githubusercontent.com/TechDudie/soulthief/main/posts/post_";
 i = 0;
 while (true) {
