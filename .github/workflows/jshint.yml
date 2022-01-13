@@ -1,0 +1,18 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout JSHint
+        run: curl https://github.com/jshint/jshint/archive/refs/tags/2.13.3.zip
+      - name: Unzip JSHint
+        run: unzip jshint-2.13.3.zip
+      - name: Analyze Code
+        run: cd jshint-2.13.3/bin && ./jshint ../../js/post.js
