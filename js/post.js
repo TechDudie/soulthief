@@ -53,7 +53,7 @@ while (true) {
   text = newsfile.responseText;
   text = text.split("\n");
   post_data = getJSONData(i);
-  post_date = formatDate(data[1]);
+  post_date = formatDate(post_data[1]);
   post = "<h3>" + post_date + " - " + post_data[0] + "</h3>";
   text.forEach(function(item, index) {
     post += "\n<p>" + item + "</p>";
