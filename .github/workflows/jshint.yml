@@ -12,7 +12,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Checkout JSHint
         run: curl https://github.com/jshint/jshint/archive/refs/tags/2.13.3.zip
+      - name: ls
+        run: ls
       - name: Unzip JSHint
         run: unzip jshint-2.13.3.zip
+      - name: ls
+        run: ls
       - name: Analyze Code
         run: cd jshint-2.13.3/bin && ./jshint ../../js/post.js
