@@ -27,8 +27,9 @@ function formatDate(github_date) {
 var base_url = "https://raw.githubusercontent.com/TechDudie/soulthief/main/posts/post_";
 var i = 0;
 var newsfile;
+var url;
 while (true) {
-  var url = base_url + i;
+  url = base_url + i;
   newsfile = new createXHR();
   newsfile.open('GET', url, false);
   newsfile.send();
