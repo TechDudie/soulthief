@@ -19,4 +19,4 @@ jobs:
       - name: ls
         run: ls
       - name: Analyze Code
-        run: cd jshint/bin && ./jshint ../../js/post.js
+        run: cd jshint-2.13.3/bin && ./jshint ../../js/post.js
